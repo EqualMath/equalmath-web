@@ -29,7 +29,7 @@ export default function RootLayout({
         className={cn(
           geistSans.variable,
           geistMono.variable,
-          "flex min-h-full flex-1 flex-col antialiased",
+          "flex min-h-full flex-1 flex-col font-sans antialiased",
         )}
       >
         {children}
