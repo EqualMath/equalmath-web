@@ -2,13 +2,12 @@
 
 import { supabaseAdmin } from "@/lib/supabase/admin"
 import { sendMail } from "./mail"
-
-const codeLength = Number(process.env.NEXT_PUBLIC_VERIFICATION_CODE_LENGTH)
+import { config } from "../config/server"
 
 export async function sendVerificationCode(email: string): Promise<void> {
   const code = String(
-    Math.floor(Math.pow(10, codeLength) * Math.random()),
-  ).padStart(codeLength, "0")
+    Math.floor(Math.pow(10, config.CODE_LENGTH) * Math.random()),
+  ).padStart(config.CODE_LENGTH, "0")
 
   // TODO: Create a Cron job that deletes old codes
   const { error } = await supabaseAdmin

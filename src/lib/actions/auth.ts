@@ -3,10 +3,7 @@
 import { supabaseAdmin } from "@/lib/supabase/admin"
 import { createClient } from "@/lib/supabase/server"
 import { verifyCode } from "@/lib/actions/verify-email"
-
-const maxNameLength = Number(process.env.NEXT_PUBLIC_MAX_NAME_LENGTH)
-const minPasswordLength = Number(process.env.NEXT_PUBLIC_MIN_PASSWORD_LENGTH)
-const maxPasswordLength = Number(process.env.NEXT_PUBLIC_MAX_PASSWORD_LENGTH)
+import { config } from "../config/server"
 
 export async function isAdmin(): Promise<boolean> {
   const supabase = await createClient()
@@ -46,16 +43,18 @@ export async function createUser({
   name: string
   password: string
 }): Promise<void> {
-  if (name.length < 1 || name.length > maxNameLength) {
-    throw new Error(`Name must be between 1 and ${maxNameLength} characters`)
+  if (name.length < 1 || name.length > config.MAX_NAME_LENGTH) {
+    throw new Error(
+      `Name must be between 1 and ${config.MAX_NAME_LENGTH} characters`,
+    )
   }
 
   if (
-    password.length < minPasswordLength ||
-    password.length > maxPasswordLength
+    password.length < config.MIN_PASSWORD_LENGTH ||
+    password.length > config.MAX_PASSWORD_LENGTH
   ) {
     throw new Error(
-      `Password must be between ${minPasswordLength} and ${maxPasswordLength} characters`,
+      `Password must be between ${config.MIN_PASSWORD_LENGTH} and ${config.MAX_PASSWORD_LENGTH} characters`,
     )
   }
 

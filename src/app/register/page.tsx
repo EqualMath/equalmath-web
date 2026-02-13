@@ -24,17 +24,13 @@ import {
 } from "@/components/ui/input-otp"
 import { createUser, emailUsed } from "@/lib/actions/auth"
 import { sendVerificationCode, verifyCode } from "@/lib/actions/verify-email"
+import { config } from "@/lib/config/client"
 import { createClient } from "@/lib/supabase/client"
 import { REGEXP_ONLY_DIGITS } from "input-otp"
 import { RefreshCwIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useCallback, useState } from "react"
-
-const codeLength = Number(process.env.NEXT_PUBLIC_VERIFICATION_CODE_LENGTH)
-const maxNameLength = Number(process.env.NEXT_PUBLIC_MAX_NAME_LENGTH)
-const minPasswordLength = Number(process.env.NEXT_PUBLIC_MIN_PASSWORD_LENGTH)
-const maxPasswordLength = Number(process.env.NEXT_PUBLIC_MAX_PASSWORD_LENGTH)
 
 const errorMessages = {
   email: {
@@ -44,16 +40,16 @@ const errorMessages = {
   },
   code: {
     empty: "Verification code is required",
-    malformed: `Verification code must be ${codeLength} digits`,
+    malformed: `Verification code must be ${config.CODE_LENGTH} digits`,
     incorrect: "Incorrect verification code",
   },
   name: {
     empty: "Name is required",
-    malformed: `Name must be less than ${maxNameLength} characters`,
+    malformed: `Name must be less than ${config.MAX_NAME_LENGTH} characters`,
   },
   password: {
     empty: "Set password",
-    malformed: `Password must be between ${minPasswordLength} and ${maxPasswordLength} characters`,
+    malformed: `Password must be between ${config.MIN_PASSWORD_LENGTH} and ${config.MAX_PASSWORD_LENGTH} characters`,
   },
   confirmPassword: {
     incorrect: "Passwords must match",
@@ -120,7 +116,7 @@ async function check({
   if (email !== undefined && code !== undefined) {
     if (!code) {
       errors.code.add("empty")
-    } else if (code.length !== codeLength) {
+    } else if (code.length !== config.CODE_LENGTH) {
       errors.code.add("malformed")
     } else if (!(await verifyCode(email, code))) {
       errors.code.add("incorrect")
@@ -136,15 +132,15 @@ async function check({
   ) {
     if (!name) {
       errors.name.add("empty")
-    } else if (name.length > maxNameLength) {
+    } else if (name.length > config.MAX_NAME_LENGTH) {
       errors.name.add("malformed")
     }
 
     if (!password) {
       errors.password.add("empty")
     } else if (
-      password.length < minPasswordLength ||
-      password.length > maxPasswordLength
+      password.length < config.MIN_PASSWORD_LENGTH ||
+      password.length > config.MAX_PASSWORD_LENGTH
     ) {
       errors.password.add("malformed")
     }
@@ -307,7 +303,7 @@ export default function Register() {
                       <div className="flex items-center justify-center">
                         <InputOTP
                           id="verification-code"
-                          maxLength={codeLength}
+                          maxLength={config.CODE_LENGTH}
                           pattern={REGEXP_ONLY_DIGITS}
                           onChange={setCode}
                           required
