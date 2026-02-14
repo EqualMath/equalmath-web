@@ -34,21 +34,6 @@ export default defineConfig([
     },
   },
   {
-    files: ["**/*.{ts,mts,cts,tsx}"],
-    rules: {
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-        },
-      ],
-      "@typescript-eslint/explicit-function-return-type": "error",
-    },
-  },
-  {
     files: ["**/*.json"],
     plugins: { json: json as unknown as ESLint.Plugin },
     language: "json/json",
@@ -79,6 +64,13 @@ export default defineConfig([
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: { "import-x": importX as unknown as ESLint.Plugin },
     extends: ["import-x/flat/recommended"],
+    settings: {
+      "import-x/resolver": {
+        typescript: {
+          project: "./tsconfig.json",
+        },
+      },
+    },
     rules: {
       "import-x/order": [
         "error",
@@ -96,6 +88,21 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
   {
+    files: ["**/*.{ts,mts,cts,tsx}"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+        },
+      ],
+      "@typescript-eslint/explicit-function-return-type": "error",
+    },
+  },
+  {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     ...eslintPluginPrettierRecommended,
   },
@@ -106,5 +113,6 @@ export default defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "src/app/components/ui",
   ]),
 ])
