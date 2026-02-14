@@ -1,3 +1,5 @@
-export default function Privacy() {
+import type { JSX } from "react"
+
+export default function Privacy(): JSX.Element {
   return <></>
 }

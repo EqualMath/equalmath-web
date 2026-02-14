@@ -1,5 +1,10 @@
 "use client"
 
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import type { JSX } from "react"
+import { useCallback, useState } from "react"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -18,11 +23,8 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { createClient } from "@/lib/supabase/client"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useCallback, useState } from "react"
 
-export default function Login() {
+export default function Login(): JSX.Element {
   const router = useRouter()
   const supabase = createClient()
 
@@ -50,11 +52,12 @@ export default function Login() {
           setIncorrect(true)
         }
       }
-    } catch (error) {
+    } catch {
+      // TODO: Error handling
     } finally {
       setLoading(false)
     }
-  }, [email, password])
+  }, [email, password, router, supabase.auth])
 
   return (
     <div className="flex min-h-full flex-1 items-center justify-center">

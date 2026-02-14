@@ -2,7 +2,7 @@
 import js from "@eslint/js"
 import json from "@eslint/json"
 import markdown from "@eslint/markdown"
-import { ESLint } from "eslint"
+import type { ESLint } from "eslint"
 import { defineConfig, globalIgnores } from "eslint/config"
 import nextVitals from "eslint-config-next/core-web-vitals"
 import nextTs from "eslint-config-next/typescript"
@@ -10,7 +10,6 @@ import { importX } from "eslint-plugin-import-x"
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended"
 import pluginReact from "eslint-plugin-react"
 import globals from "globals"
-import tseslint from "typescript-eslint"
 
 export default defineConfig([
   {
@@ -19,7 +18,6 @@ export default defineConfig([
     extends: ["js/recommended"],
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
   },
-  tseslint.configs.recommended,
   {
     files: ["**/*.{jsx,tsx}"],
     ...pluginReact.configs.flat.recommended,
@@ -100,6 +98,13 @@ export default defineConfig([
         },
       ],
       "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          prefer: "type-imports",
+          fixStyle: "separate-type-imports",
+        },
+      ],
     },
   },
   {
@@ -113,6 +118,7 @@ export default defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    "src/app/components/ui",
+    "src/components/ui/**",
+    "src/lib/supabase/database.types.ts",
   ]),
 ])

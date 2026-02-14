@@ -1,9 +1,9 @@
 "use server"
 
+import { verifyCode } from "@/lib/actions/verify-email"
+import { config } from "@/lib/config/server"
 import { supabaseAdmin } from "@/lib/supabase/admin"
 import { createClient } from "@/lib/supabase/server"
-import { verifyCode } from "@/lib/actions/verify-email"
-import { config } from "../config/server"
 
 export async function isAdmin(): Promise<boolean> {
   const supabase = await createClient()

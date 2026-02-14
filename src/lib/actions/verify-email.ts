@@ -1,8 +1,8 @@
 "use server"
 
+import { sendMail } from "@/lib/actions/mail"
+import { config } from "@/lib/config/server"
 import { supabaseAdmin } from "@/lib/supabase/admin"
-import { sendMail } from "./mail"
-import { config } from "../config/server"
 
 export async function sendVerificationCode(email: string): Promise<void> {
   const code = String(

@@ -1,7 +1,11 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import "./globals.css"
+import type { JSX } from "react"
+
+import { NavigationBar } from "@/components/navigation"
 import { cn } from "@/lib/utils"
+
+import "./globals.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +26,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>): JSX.Element {
   return (
     <html lang="en" className="flex min-h-full flex-col">
       <body
@@ -32,6 +36,7 @@ export default function RootLayout({
           "flex min-h-full flex-1 flex-col font-sans antialiased",
         )}
       >
+        <NavigationBar />
         {children}
       </body>
     </html>

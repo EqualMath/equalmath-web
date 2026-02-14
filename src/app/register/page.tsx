@@ -1,5 +1,12 @@
 "use client"
 
+import { REGEXP_ONLY_DIGITS } from "input-otp"
+import { RefreshCwIcon } from "lucide-react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import type { JSX } from "react"
+import { useCallback, useState } from "react"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -26,11 +33,6 @@ import { createUser, emailUsed } from "@/lib/actions/auth"
 import { sendVerificationCode, verifyCode } from "@/lib/actions/verify-email"
 import { config } from "@/lib/config/client"
 import { createClient } from "@/lib/supabase/client"
-import { REGEXP_ONLY_DIGITS } from "input-otp"
-import { RefreshCwIcon } from "lucide-react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useCallback, useState } from "react"
 
 const errorMessages = {
   email: {
@@ -153,7 +155,7 @@ async function check({
   return errors
 }
 
-export default function Register() {
+export default function Register(): JSX.Element {
   const router = useRouter()
   const supabase = createClient()
 
@@ -183,7 +185,8 @@ export default function Register() {
         await sendVerificationCode(email)
         setStep("code")
       }
-    } catch (error) {
+    } catch {
+      // TODO: Error handling
     } finally {
       setLoading(false)
     }
@@ -197,7 +200,8 @@ export default function Register() {
       if (newErrors.code.size === 0) {
         setStep("details")
       }
-    } catch (error) {
+    } catch {
+      // TODO: Error handling
     } finally {
       setLoading(false)
     }
@@ -223,11 +227,12 @@ export default function Register() {
         await supabase.auth.signInWithPassword({ email, password })
         router.push("/tutors")
       }
-    } catch (error) {
+    } catch {
+      // TODO: Error handling
     } finally {
       setLoading(false)
     }
-  }, [email, code, name, password, confirmPassword])
+  }, [email, code, name, password, confirmPassword, router, supabase.auth])
 
   return (
     <div className="flex min-h-full flex-1 items-center justify-center">

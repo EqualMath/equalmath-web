@@ -1,7 +1,9 @@
 import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
-export async function updateSession(request: NextRequest) {
+export async function updateSession(
+  request: NextRequest,
+): Promise<NextResponse> {
   let supabaseResponse = NextResponse.next({
     request,
   })
@@ -39,6 +41,7 @@ export async function updateSession(request: NextRequest) {
   // with the Supabase client, your users may be randomly logged out.
   const { data } = await supabase.auth.getClaims()
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const user = data?.claims
 
   // if (
