@@ -239,183 +239,181 @@ export default function Register(): JSX.Element {
   }, [email, code, name, password, confirmPassword, router, supabase.auth])
 
   return (
-    <div className="absolute top-0 flex min-h-screen w-screen items-center justify-center">
-      <Card className="w-96">
-        <CardHeader>
-          <CardTitle>Register</CardTitle>
-          <CardDescription>Enter an email to create an account</CardDescription>
-          <CardAction>
-            <Link href="/login">
-              <Button variant="link">Log In</Button>
-            </Link>
-          </CardAction>
-        </CardHeader>
-        <CardContent>
-          <form
-            noValidate
-            onSubmit={(e) => {
-              e.preventDefault()
-              switch (step) {
-                case "email":
-                  handleEmailSubmit()
-                  break
-                case "code":
-                  handleCodeSubmit()
-                  break
-                case "details":
-                  handleDetailsSubmit()
-                  break
-              }
-            }}
-          >
-            <FieldGroup>
+    <Card className="absolute top-1/2 left-1/2 w-96 -translate-1/2">
+      <CardHeader>
+        <CardTitle>Register</CardTitle>
+        <CardDescription>Enter an email to create an account</CardDescription>
+        <CardAction>
+          <Link href="/login">
+            <Button variant="link">Log In</Button>
+          </Link>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <form
+          noValidate
+          onSubmit={(e) => {
+            e.preventDefault()
+            switch (step) {
+              case "email":
+                handleEmailSubmit()
+                break
+              case "code":
+                handleCodeSubmit()
+                break
+              case "details":
+                handleDetailsSubmit()
+                break
+            }
+          }}
+        >
+          <FieldGroup>
+            <FieldSet>
+              <FieldGroup>
+                <Field>
+                  <FieldLabel htmlFor="email">Email</FieldLabel>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="user@example.com"
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={step !== "email"}
+                    required
+                    aria-invalid={!!errors.email.size}
+                  />
+                  <FieldError
+                    errors={[...errors.email].map((error) => ({
+                      message: errorMessages.email[error],
+                    }))}
+                  />
+                </Field>
+              </FieldGroup>
+            </FieldSet>
+            {step !== "email" && (
               <FieldSet>
                 <FieldGroup>
                   <Field>
-                    <FieldLabel htmlFor="email">Email</FieldLabel>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="user@example.com"
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={step !== "email"}
-                      required
-                      aria-invalid={!!errors.email.size}
-                    />
+                    <div className="flex items-center justify-between">
+                      <FieldLabel htmlFor="verification-code">
+                        Verification Code
+                      </FieldLabel>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="xs"
+                        onClick={handleEmailSubmit}
+                        disabled={step !== "code" || loading}
+                      >
+                        <RefreshCwIcon />
+                        Resend Code
+                      </Button>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <InputOTP
+                        id="verification-code"
+                        maxLength={config.auth.code.length}
+                        pattern={REGEXP_ONLY_DIGITS}
+                        onChange={setCode}
+                        required
+                        disabled={step !== "code"}
+                      >
+                        <InputOTPGroup>
+                          {[...Array(6)].map((_, i) => (
+                            <InputOTPSlot
+                              key={i}
+                              index={i}
+                              aria-invalid={!!errors.code.size}
+                            />
+                          ))}
+                        </InputOTPGroup>
+                      </InputOTP>
+                    </div>
                     <FieldError
-                      errors={[...errors.email].map((error) => ({
-                        message: errorMessages.email[error],
+                      errors={[...errors.code].map((error) => ({
+                        message: errorMessages.code[error],
                       }))}
                     />
                   </Field>
                 </FieldGroup>
               </FieldSet>
-              {step !== "email" && (
+            )}
+            {step === "details" && (
+              <>
                 <FieldSet>
                   <FieldGroup>
                     <Field>
-                      <div className="flex items-center justify-between">
-                        <FieldLabel htmlFor="verification-code">
-                          Verification Code
-                        </FieldLabel>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="xs"
-                          onClick={handleEmailSubmit}
-                          disabled={step !== "code" || loading}
-                        >
-                          <RefreshCwIcon />
-                          Resend Code
-                        </Button>
-                      </div>
-                      <div className="flex items-center justify-center">
-                        <InputOTP
-                          id="verification-code"
-                          maxLength={config.auth.code.length}
-                          pattern={REGEXP_ONLY_DIGITS}
-                          onChange={setCode}
-                          required
-                          disabled={step !== "code"}
-                        >
-                          <InputOTPGroup>
-                            {[...Array(6)].map((_, i) => (
-                              <InputOTPSlot
-                                key={i}
-                                index={i}
-                                aria-invalid={!!errors.code.size}
-                              />
-                            ))}
-                          </InputOTPGroup>
-                        </InputOTP>
-                      </div>
+                      <FieldLabel htmlFor="name">Name</FieldLabel>
+                      <Input
+                        id="name"
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        aria-invalid={!!errors.name.size}
+                      />
                       <FieldError
-                        errors={[...errors.code].map((error) => ({
-                          message: errorMessages.code[error],
+                        errors={[...errors.name].map((error) => ({
+                          message: errorMessages.name[error],
                         }))}
                       />
                     </Field>
                   </FieldGroup>
                 </FieldSet>
-              )}
-              {step === "details" && (
-                <>
-                  <FieldSet>
-                    <FieldGroup>
-                      <Field>
-                        <FieldLabel htmlFor="name">Name</FieldLabel>
-                        <Input
-                          id="name"
-                          onChange={(e) => setName(e.target.value)}
-                          required
-                          aria-invalid={!!errors.name.size}
-                        />
-                        <FieldError
-                          errors={[...errors.name].map((error) => ({
-                            message: errorMessages.name[error],
-                          }))}
-                        />
-                      </Field>
-                    </FieldGroup>
-                  </FieldSet>
-                  <FieldSet>
-                    <FieldGroup>
-                      <Field>
-                        <FieldLabel htmlFor="password">Password</FieldLabel>
-                        <Input
-                          id="password"
-                          type="password"
-                          onChange={(e) => setPassword(e.target.value)}
-                          required
-                          aria-invalid={!!errors.password.size}
-                        />
-                        <FieldError
-                          errors={[...errors.password].map((error) => ({
-                            message: errorMessages.password[error],
-                          }))}
-                        />
-                      </Field>
-                      <Field>
-                        <FieldLabel htmlFor="confirm-password">
-                          Confirm Password
-                        </FieldLabel>
-                        <Input
-                          id="confirm-password"
-                          type="password"
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                          required
-                          aria-invalid={
-                            !!errors.password.size ||
-                            !!errors.confirmPassword.size
-                          }
-                        />
-                        <FieldError
-                          errors={[...errors.confirmPassword].map((error) => ({
-                            message: errorMessages.confirmPassword[error],
-                          }))}
-                        />
-                      </Field>
-                    </FieldGroup>
-                  </FieldSet>
-                </>
-              )}
-              <FieldSet>
-                <FieldGroup>
-                  <Field>
-                    <Button type="submit" disabled={loading}>
-                      {loading ?
-                        "Loading..."
-                      : step === "details" ?
-                        "Submit"
-                      : "Continue"}
-                    </Button>
-                  </Field>
-                </FieldGroup>
-              </FieldSet>
-            </FieldGroup>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+                <FieldSet>
+                  <FieldGroup>
+                    <Field>
+                      <FieldLabel htmlFor="password">Password</FieldLabel>
+                      <Input
+                        id="password"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        aria-invalid={!!errors.password.size}
+                      />
+                      <FieldError
+                        errors={[...errors.password].map((error) => ({
+                          message: errorMessages.password[error],
+                        }))}
+                      />
+                    </Field>
+                    <Field>
+                      <FieldLabel htmlFor="confirm-password">
+                        Confirm Password
+                      </FieldLabel>
+                      <Input
+                        id="confirm-password"
+                        type="password"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                        aria-invalid={
+                          !!errors.password.size ||
+                          !!errors.confirmPassword.size
+                        }
+                      />
+                      <FieldError
+                        errors={[...errors.confirmPassword].map((error) => ({
+                          message: errorMessages.confirmPassword[error],
+                        }))}
+                      />
+                    </Field>
+                  </FieldGroup>
+                </FieldSet>
+              </>
+            )}
+            <FieldSet>
+              <FieldGroup>
+                <Field>
+                  <Button type="submit" disabled={loading}>
+                    {loading ?
+                      "Loading..."
+                    : step === "details" ?
+                      "Submit"
+                    : "Continue"}
+                  </Button>
+                </Field>
+              </FieldGroup>
+            </FieldSet>
+          </FieldGroup>
+        </form>
+      </CardContent>
+    </Card>
   )
 }
