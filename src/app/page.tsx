@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button"
 
 export default function Home(): JSX.Element {
   return (
-    <div className="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-center justify-center gap-8">
+    <div className="flex min-h-full w-full flex-1 flex-col items-center justify-center gap-8 px-4 py-8">
       <div className="flex w-full flex-col items-center justify-center">
-        <h1 className="text-6xl font-black">Free Math Tutoring!</h1>
-        <p className="text-lg font-bold">
+        <h1 className="text-center text-6xl font-black">Free Math Tutoring!</h1>
+        <p className="text-center text-lg font-bold">
           Equal Math provides free math tutoring sessions for middle and high
           school students!
         </p>
