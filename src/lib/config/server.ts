@@ -2,13 +2,17 @@ import { config as clientConfig } from "./client"
 
 export const config = {
   ...clientConfig,
-  // Supabase
-  SUPABASE_SECRET_KEY: process.env.SUPABASE_SECRET_KEY!,
-  SUPABASE_PROJECT_ID: process.env.SUPABASE_PROJECT_ID!,
-  // Mail
-  SMTP_SERVER_HOST: process.env.SMTP_SERVER_HOST!,
-  SMTP_SERVER_PORT: process.env.SMTP_SERVER_PORT!,
-  SMTP_SERVER_USERNAME: process.env.SMTP_SERVER_USERNAME!,
-  SMTP_SERVER_PASSWORD: process.env.SMTP_SERVER_PASSWORD!,
-  EMAIL_FROM: process.env.EMAIL_FROM!,
+  supabase: {
+    ...clientConfig.supabase,
+    secret_key: process.env.SUPABASE_SECRET_DEFAULT_KEY!,
+  },
+  mail: {
+    server: {
+      host: process.env.SMTP_SERVER_HOST!,
+      port: Number(process.env.SMTP_SERVER_PORT!),
+      user: process.env.SMTP_SERVER_USERNAME!,
+      pass: process.env.SMTP_SERVER_PASSWORD!,
+    },
+    email: process.env.EMAIL_FROM!,
+  },
 }

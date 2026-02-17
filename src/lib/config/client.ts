@@ -1,9 +1,18 @@
 export const config = {
-  CODE_LENGTH: 6,
-  MAX_NAME_LENGTH: 64,
-  MIN_PASSWORD_LENGTH: 8,
-  MAX_PASSWORD_LENGTH: 64,
-  // Supabase
-  SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  SUPABASE_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+  auth: {
+    password: {
+      minLength: 8,
+      maxLength: 64,
+    },
+    code: {
+      length: 6,
+    },
+    name: {
+      maxLength: 64,
+    },
+  },
+  supabase: {
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    publishable_key: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!,
+  },
 }

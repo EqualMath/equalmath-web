@@ -29,8 +29,12 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp"
-import { createUser, emailUsed } from "@/lib/actions/auth"
-import { sendVerificationCode, verifyCode } from "@/lib/actions/verify-email"
+import {
+  createUser,
+  isEmailTaken,
+  sendVerificationCode,
+  verifyCode,
+} from "@/lib/actions/auth"
 import { config } from "@/lib/config/client"
 import { createClient } from "@/lib/supabase/client"
 
@@ -42,16 +46,16 @@ const errorMessages = {
   },
   code: {
     empty: "Verification code is required",
-    malformed: `Verification code must be ${config.CODE_LENGTH} digits`,
+    malformed: `Verification code must be ${config.auth.code.length} digits`,
     incorrect: "Incorrect verification code",
   },
   name: {
     empty: "Name is required",
-    malformed: `Name must be less than ${config.MAX_NAME_LENGTH} characters`,
+    malformed: `Name must not exceed than ${config.auth.name.maxLength} characters`,
   },
   password: {
     empty: "Set password",
-    malformed: `Password must be between ${config.MIN_PASSWORD_LENGTH} and ${config.MAX_PASSWORD_LENGTH} characters`,
+    malformed: `Password must be between ${config.auth.password.minLength} and ${config.auth.password.maxLength} characters`,
   },
   confirmPassword: {
     incorrect: "Passwords must match",
@@ -110,7 +114,7 @@ async function check({
       errors.email.add("empty")
     } else if (!email.includes("@")) {
       errors.email.add("malformed")
-    } else if (await emailUsed(email)) {
+    } else if (await isEmailTaken(email)) {
       errors.email.add("used")
     }
   }
@@ -118,7 +122,7 @@ async function check({
   if (email !== undefined && code !== undefined) {
     if (!code) {
       errors.code.add("empty")
-    } else if (code.length !== config.CODE_LENGTH) {
+    } else if (code.length !== config.auth.code.length) {
       errors.code.add("malformed")
     } else if (!(await verifyCode(email, code))) {
       errors.code.add("incorrect")
@@ -134,15 +138,15 @@ async function check({
   ) {
     if (!name) {
       errors.name.add("empty")
-    } else if (name.length > config.MAX_NAME_LENGTH) {
+    } else if (name.length > config.auth.name.maxLength) {
       errors.name.add("malformed")
     }
 
     if (!password) {
       errors.password.add("empty")
     } else if (
-      password.length < config.MIN_PASSWORD_LENGTH ||
-      password.length > config.MAX_PASSWORD_LENGTH
+      password.length < config.auth.password.minLength ||
+      password.length > config.auth.password.maxLength
     ) {
       errors.password.add("malformed")
     }
@@ -223,7 +227,7 @@ export default function Register(): JSX.Element {
         newErrors.password.size === 0 &&
         newErrors.confirmPassword.size === 0
       ) {
-        await createUser({ email, code, name, password })
+        await createUser(email, password, code, name)
         await supabase.auth.signInWithPassword({ email, password })
         router.push("/tutors")
       }
@@ -235,7 +239,7 @@ export default function Register(): JSX.Element {
   }, [email, code, name, password, confirmPassword, router, supabase.auth])
 
   return (
-    <div className="flex min-h-full flex-1 items-center justify-center">
+    <div className="absolute top-0 flex min-h-screen w-screen items-center justify-center">
       <Card className="w-96">
         <CardHeader>
           <CardTitle>Register</CardTitle>
@@ -308,7 +312,7 @@ export default function Register(): JSX.Element {
                       <div className="flex items-center justify-center">
                         <InputOTP
                           id="verification-code"
-                          maxLength={config.CODE_LENGTH}
+                          maxLength={config.auth.code.length}
                           pattern={REGEXP_ONLY_DIGITS}
                           onChange={setCode}
                           required
