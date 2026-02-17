@@ -40,7 +40,7 @@ export function TutorItem({
       </ItemMedia>
       <ItemContent>
         <ItemTitle>{tutor.name}</ItemTitle>
-        <ItemDescription>{tutor.bio}</ItemDescription>
+        <ItemDescription className="line-clamp-4">{tutor.bio}</ItemDescription>
       </ItemContent>
       <ItemActions>
         <Link href={"https://google.com"}>
