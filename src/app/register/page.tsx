@@ -4,7 +4,6 @@ import { REGEXP_ONLY_DIGITS } from "input-otp"
 import { RefreshCwIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import type { JSX } from "react"
 import { useCallback, useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -159,7 +158,7 @@ async function check({
   return errors
 }
 
-export default function Register(): JSX.Element {
+export default function Register() {
   const router = useRouter()
   const supabase = createClient()
 

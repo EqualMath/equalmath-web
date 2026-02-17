@@ -1,5 +1,3 @@
-import type { JSX } from "react"
-
-export default function Register(): JSX.Element {
+export default function Register() {
   return <></>
 }

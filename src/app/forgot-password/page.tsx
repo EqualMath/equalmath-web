@@ -1,5 +1,3 @@
-import type { JSX } from "react"
-
-export default function ForgotPassword(): JSX.Element {
+export default function ForgotPassword() {
   return <></>
 }

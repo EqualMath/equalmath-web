@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import type { JSX } from "react"
 import { useCallback, useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -24,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { createClient } from "@/lib/supabase/client"
 
-export default function Login(): JSX.Element {
+export default function Login() {
   const router = useRouter()
   const supabase = createClient()
 

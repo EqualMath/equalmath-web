@@ -1,5 +1,3 @@
-import type { JSX } from "react"
-
-export default function Terms(): JSX.Element {
+export default function Terms() {
   return <></>
 }
