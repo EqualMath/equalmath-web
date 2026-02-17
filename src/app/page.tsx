@@ -1,9 +1,8 @@
 import Link from "next/link"
-import type { JSX } from "react"
 
 import { Button } from "@/components/ui/button"
 
-export default function Home(): JSX.Element {
+export default function Home() {
   return (
     <div className="flex min-h-full w-full flex-1 flex-col items-center justify-center gap-8 px-4 py-8">
       <div className="flex w-full flex-col items-center justify-center">

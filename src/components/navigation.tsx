@@ -1,9 +1,8 @@
 import Link from "next/link"
-import type { JSX } from "react"
 
 import { Button } from "./ui/button"
 
-export function NavigationBar(): JSX.Element {
+export function NavigationBar() {
   return (
     <nav className="border-accent flex h-20 w-full items-center justify-between border-b-2">
       <div className="mr-auto flex pl-12">

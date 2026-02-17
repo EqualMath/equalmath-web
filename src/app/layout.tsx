@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import type { JSX } from "react"
 
 import { NavigationBar } from "@/components/navigation"
 import { cn } from "@/lib/utils"
@@ -26,7 +25,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>): JSX.Element {
+}>) {
   return (
     <html lang="en" className="flex min-h-full flex-col">
       <head>

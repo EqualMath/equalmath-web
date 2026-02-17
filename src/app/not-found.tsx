@@ -1,6 +1,4 @@
-import type { JSX } from "react"
-
-export default function NotFound(): JSX.Element {
+export default function NotFound() {
   return (
     <div className="absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
       <div className="flex flex-col items-center justify-center">
