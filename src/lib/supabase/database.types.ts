@@ -14,7 +14,74 @@ export type Database = {
   }
   public: {
     Tables: {
-      email_verify: {
+      roles: {
+        Row: {
+          is_admin: boolean
+          is_tutor: boolean
+          user_id: string
+        }
+        Insert: {
+          is_admin?: boolean
+          is_tutor?: boolean
+          user_id: string
+        }
+        Update: {
+          is_admin?: boolean
+          is_tutor?: boolean
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "roles_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tutors: {
+        Row: {
+          bio: string
+          img: string
+          user_id: string
+        }
+        Insert: {
+          bio: string
+          img: string
+          user_id: string
+        }
+        Update: {
+          bio?: string
+          img?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tutors_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users: {
+        Row: {
+          id: string
+          name: string
+        }
+        Insert: {
+          id: string
+          name: string
+        }
+        Update: {
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      verification_codes: {
         Row: {
           code: string
           created_at: string
@@ -35,30 +102,12 @@ export type Database = {
         }
         Relationships: []
       }
-      roles: {
-        Row: {
-          is_admin: boolean
-          is_tutor: boolean
-          user_id: string
-        }
-        Insert: {
-          is_admin?: boolean
-          is_tutor?: boolean
-          user_id: string
-        }
-        Update: {
-          is_admin?: boolean
-          is_tutor?: boolean
-          user_id?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      check_user_exists: { Args: { user_email: string }; Returns: boolean }
+      is_email_taken: { Args: { query_email: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
