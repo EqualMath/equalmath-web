@@ -29,6 +29,9 @@ export default function RootLayout({
 }>): JSX.Element {
   return (
     <html lang="en" className="flex min-h-full flex-col">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className={cn(
           geistSans.variable,
@@ -37,7 +40,7 @@ export default function RootLayout({
         )}
       >
         <NavigationBar />
-        {children}
+        <main className="flex min-h-full flex-1 flex-col">{children}</main>
       </body>
     </html>
   )
