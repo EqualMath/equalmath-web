@@ -1,5 +1,13 @@
 {
+  "plugins": ["prettier-plugin-jsdoc"],
   "semi": false,
   "experimentalTernaries": true,
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "overrides": [
+    {
+      "files": ["src/app/**", "src/components/**"],
+      "options": {
+        "plugins": ["prettier-plugin-tailwindcss"]
+      }
+    }
+  ]
 }

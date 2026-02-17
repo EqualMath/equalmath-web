@@ -102,9 +102,16 @@ export default defineConfig([
         "error",
         {
           prefer: "type-imports",
-          fixStyle: "separate-type-imports",
+          fixStyle: "inline-type-imports",
         },
       ],
+      "@typescript-eslint/no-namespace": "off",
+    },
+  },
+  {
+    files: ["src/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off",
     },
   },
   {
