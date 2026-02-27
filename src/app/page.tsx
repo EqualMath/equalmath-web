@@ -188,13 +188,13 @@ export default function Home() {
                                   <h5 className="mb-2">Phi</h5>
                                 </div>
 
-                                <Link
+                                <a
                                   className="badge bg-design rounded-pill ms-auto"
                                   style={{ width: "fit-content" }}
                                   href="https://calendar.app.google/9ASCNsFnPYc27D5j6"
                                 >
                                   Book
-                                </Link>
+                                </a>
                               </div>
 
                               <div className="d-flex">
@@ -223,13 +223,13 @@ export default function Home() {
                                   <h5 className="mb-2">Aiden</h5>
                                 </div>
 
-                                <Link
+                                <a
                                   className="badge bg-design rounded-pill ms-auto"
                                   style={{ width: "fit-content" }}
                                   href="https://calendar.app.google/5ft3Ni3xUE8p97by5"
                                 >
                                   Book
-                                </Link>
+                                </a>
                               </div>
 
                               <div className="d-flex">
@@ -256,13 +256,13 @@ export default function Home() {
                                   <h5 className="mb-2">Sachin</h5>
                                 </div>
 
-                                <Link
+                                <a
                                   className="badge bg-design rounded-pill ms-auto"
                                   style={{ width: "fit-content" }}
                                   href="https://calendar.app.google/WzzjynznaeVEoPD68"
                                 >
                                   Book
-                                </Link>
+                                </a>
                               </div>
                               <div className="d-flex">
                                 <div>
@@ -400,7 +400,7 @@ export default function Home() {
           <div className="container">
             <div className="row">
               <div className="col-lg-3 col-12 mb-4 pb-2">
-                <Link className="navbar-brand mb-2" href="index.html">
+                <Link className="navbar-brand mb-2" href="/">
                   <span>Equal Math</span>
                 </Link>
               </div>
@@ -439,12 +439,12 @@ export default function Home() {
                 <h6 className="site-footer-title mb-3">Contact</h6>
 
                 <p className="text-white d-flex">
-                  <Link
+                  <a
                     href="mailto:contact@equalmath.org"
                     className="site-footer-link"
                   >
                     contact@equalmath.org
-                  </Link>
+                  </a>
                 </p>
               </div>
 
@@ -455,13 +455,13 @@ export default function Home() {
                   <br />
                   <br />
                   Design:{" "}
-                  <Link
+                  <a
                     rel="nofollow"
                     href="https://templatemo.com"
                     target="_blank"
                   >
                     TemplateMo
-                  </Link>
+                  </a>
                 </p>
               </div>
             </div>
