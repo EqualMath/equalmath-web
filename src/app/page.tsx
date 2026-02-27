@@ -234,7 +234,7 @@ export default function Home() {
                                   <p className="mb-0">
                                     <br />
                                     Can tutor topics from middle school math to
-                                    calculus and linear algebra.
+                                    second-year calculus and linear algebra.
                                   </p>
                                 </div>
                               </div>
