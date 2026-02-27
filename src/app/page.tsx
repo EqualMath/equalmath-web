@@ -1,9 +1,10 @@
+"use client"
+
 import Script from "next/script"
 import "./css/bootstrap.min.css"
 import "./css/bootstrap-icons.css"
 import "./css/templatemo-topic-listing.css"
 import { Montserrat } from "next/font/google"
-import { Metadata } from "next"
 import Link from "next/link"
 
 const montserrat = Montserrat({
@@ -11,14 +12,13 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 })
 
-export const metadata: Metadata = {
-  title: "Equal Math",
-  description: "Free math tutoring",
-}
-
 export default function Home() {
   return (
     <html lang="en">
+      <head>
+        <title>Equal Math</title>
+        <meta name="description" content="Free math tutoring" />
+      </head>
       <body id="top" className={`${montserrat.variable}`}>
         <main>
           <nav className="navbar navbar-expand-lg">
@@ -462,11 +462,11 @@ export default function Home() {
           </div>
         </footer>
 
-        <Script src="js/jquery.min.js"></Script>
-        <Script src="js/bootstrap.bundle.min.js"></Script>
-        <Script src="js/jquery.sticky.js"></Script>
-        <Script src="js/click-scroll.js"></Script>
-        <Script src="js/custom.js"></Script>
+        <Script src="js/jquery.min.js" />
+        <Script src="js/bootstrap.bundle.min.js" />
+        <Script src="js/jquery.sticky.js" />
+        <Script src="js/click-scroll.js" />
+        <Script src="js/custom.js" />
       </body>
     </html>
   )
