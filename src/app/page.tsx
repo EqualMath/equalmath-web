@@ -444,7 +444,7 @@ export default function Home() {
 
               <div className="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
                 <h6 className="site-footer-title mb-3">Site Information</h6>
-                <p className="copyright-text mt-lg-5 mt-4">
+                <p className="copyright-text">
                   Copyright © 2026 Equal Math. All rights reserved.
                   <br />
                   <br />
