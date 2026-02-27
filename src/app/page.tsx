@@ -18,6 +18,12 @@ export default function Home() {
       <head>
         <title>Equal Math</title>
         <meta name="description" content="Free math tutoring" />
+
+        <Script src="js/jquery.min.js" />
+        <Script src="js/bootstrap.bundle.min.js" />
+        <Script src="js/jquery.sticky.js" />
+        <Script src="js/click-scroll.js" />
+        <Script src="js/custom.js" />
       </head>
       <body id="top" className={`${montserrat.variable}`}>
         <main>
@@ -461,12 +467,6 @@ export default function Home() {
             </div>
           </div>
         </footer>
-
-        <Script src="js/jquery.min.js" />
-        <Script src="js/bootstrap.bundle.min.js" />
-        <Script src="js/jquery.sticky.js" />
-        <Script src="js/click-scroll.js" />
-        <Script src="js/custom.js" />
       </body>
     </html>
   )
