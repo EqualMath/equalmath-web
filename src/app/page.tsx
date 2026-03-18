@@ -180,75 +180,71 @@ export default function Home() {
                       tabIndex={0}
                     >
                       <div className="row">
-                        <div className="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                           <div className="custom-block bg-white shadow-lg">
-                            <div>
-                              <div className="d-flex">
-                                <div>
-                                  <h5 className="mb-2">Phi</h5>
-                                </div>
+                            <div className="d-flex">
+                              <h5 className="mb-2">Phi</h5>
 
-                                <a
-                                  className="badge bg-design rounded-pill ms-auto"
-                                  style={{ width: "fit-content" }}
-                                  href="https://calendar.app.google/9ASCNsFnPYc27D5j6"
-                                >
-                                  Book
-                                </a>
-                              </div>
+                              <a
+                                className="badge bg-design rounded-pill ms-auto"
+                                style={{ width: "fit-content" }}
+                                href="https://calendar.app.google/9ASCNsFnPYc27D5j6"
+                              >
+                                Book
+                              </a>
+                            </div>
 
-                              <div className="d-flex">
-                                <div>
-                                  <p className="mb-0">
-                                    I love math, music, and making! 17 is the
-                                    best number.
-                                  </p>
-                                  <p className="mb-0">
-                                    <br />
-                                    I&apos;m comfortable tutoring topics from
-                                    elementary school math to second-year
-                                    calculus.
-                                  </p>
-                                </div>
+                            <div className="d-flex">
+                              <div>
+                                <p className="mb-0">
+                                  I love math, music, and making! 17 is the best
+                                  number.
+                                </p>
+                                <p className="mb-0">
+                                  <br />I can tutor topics from elementary
+                                  school math to second-year calculus.
+                                </p>
+                                <p className="mb-0">
+                                  <br />
+                                  11th Grade
+                                </p>
                               </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                           <div className="custom-block bg-white shadow-lg">
-                            <div>
-                              <div className="d-flex">
-                                <div>
-                                  <h5 className="mb-2">Aiden</h5>
-                                </div>
-
-                                <a
-                                  className="badge bg-design rounded-pill ms-auto"
-                                  style={{ width: "fit-content" }}
-                                  href="https://calendar.app.google/5ft3Ni3xUE8p97by5"
-                                >
-                                  Book
-                                </a>
+                            <div className="d-flex">
+                              <div>
+                                <h5 className="mb-2">Aiden</h5>
                               </div>
 
-                              <div className="d-flex">
-                                <div>
-                                  <p className="mb-0">
-                                    Loves math, programming, and piano!
-                                  </p>
-                                  <p className="mb-0">
-                                    <br />
-                                    Can tutor topics from middle school math to
-                                    second-year calculus and linear algebra.
-                                  </p>
-                                </div>
+                              <a
+                                className="badge bg-design rounded-pill ms-auto"
+                                style={{ width: "fit-content" }}
+                                href="https://calendar.app.google/5ft3Ni3xUE8p97by5"
+                              >
+                                Book
+                              </a>
+                            </div>
+
+                            <div className="d-flex">
+                              <div>
+                                <p className="mb-0">
+                                  Loves math, programming, and piano!
+                                </p>
+                                <p className="mb-0">
+                                  <br />
+                                  Can tutor topics from middle school math to
+                                  second-year calculus and linear algebra.
+                                </p>
+                                <p className="mb-0">
+                                  <br />
+                                  11th Grade
+                                </p>
                               </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                           <div className="custom-block bg-white shadow-lg">
                             <div>
                               <div className="d-flex">
@@ -273,6 +269,79 @@ export default function Home() {
                                     <br />
                                     Can tutor topics from middle school math to
                                     second-year calculus.
+                                  </p>
+                                  <p className="mb-0">
+                                    <br />
+                                    11th Grade
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="custom-block bg-white shadow-lg">
+                            <div>
+                              <div className="d-flex">
+                                <div>
+                                  <h5 className="mb-2">Anya</h5>
+                                </div>
+
+                                <a
+                                  className="badge bg-design rounded-pill ms-auto"
+                                  style={{ width: "fit-content" }}
+                                  href="https://calendar.app.google/nhM3vJE6rDqDoC8K8"
+                                >
+                                  Book
+                                </a>
+                              </div>
+
+                              <div className="d-flex">
+                                <div>
+                                  <p className="mb-0">
+                                    I love math, volleyball, and teaching!
+                                  </p>
+                                  <p className="mb-0">
+                                    <br />
+                                    Can tutor topics from elementary school math
+                                    to first-year calculus.
+                                  </p>
+                                  <p className="mb-0">
+                                    <br />
+                                    11th Grade
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="custom-block bg-white shadow-lg">
+                            <div>
+                              <div className="d-flex">
+                                <div>
+                                  <h5 className="mb-2">Allison</h5>
+                                </div>
+
+                                <a
+                                  className="badge bg-design rounded-pill ms-auto"
+                                  style={{ width: "fit-content" }}
+                                  href="https://calendar.app.google/femfu2HCNVc2enfeA"
+                                >
+                                  Book
+                                </a>
+                              </div>
+                              <div className="d-flex">
+                                <div>
+                                  <p className="mb-0">
+                                    Hi! I'm Allison, and I love dancing, gaming,
+                                    and math :)
+                                  </p>
+                                  <p className="mb-0">
+                                    <br /> I can tutor topics from elementary
+                                    school math to calculus.
+                                  </p>
+                                  <p className="mb-0">
+                                    <br />
+                                    11th Grade
                                   </p>
                                 </div>
                               </div>
@@ -348,7 +417,7 @@ export default function Home() {
                         data-bs-parent="#accordionExample"
                       >
                         <div className="accordion-body">
-                          Most tutors can cover topics ranging from early middle
+                          Most tutors can cover topics ranging from elementary
                           school math to second-year calculus. Some tutors can
                           cover more advanced topics (check their bios above).
                           We can also help provide fun extra challenge problems.
