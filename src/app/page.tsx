@@ -332,8 +332,8 @@ export default function Home() {
                               <div className="d-flex">
                                 <div>
                                   <p className="mb-0">
-                                    Hi! I'm Allison, and I love dancing, gaming,
-                                    and math :)
+                                    Hi! I&apos;m Allison, and I love dancing,
+                                    gaming, and math :)
                                   </p>
                                   <p className="mb-0">
                                     <br /> I can tutor topics from elementary
