@@ -370,7 +370,7 @@ export default function Content() {
                       aria-labelledby="headingOne"
                       data-bs-parent="#accordionExample"
                     >
-                      <div className="accordion-body">
+                      <div className="accordion-body visible">
                         Sessions typically last 30 minutes. If you&apos;d like,
                         you can book two sessions back-to-back to have an
                         hour-long session. Please do not book more than two
@@ -399,7 +399,7 @@ export default function Content() {
                       aria-labelledby="headingTwo"
                       data-bs-parent="#accordionExample"
                     >
-                      <div className="accordion-body">
+                      <div className="accordion-body visible">
                         Most tutors can cover topics ranging from elementary
                         school math to second-year calculus. Some tutors can
                         cover more advanced topics (check their bios above). We
@@ -431,7 +431,7 @@ export default function Content() {
                       aria-labelledby="headingThree"
                       data-bs-parent="#accordionExample"
                     >
-                      <div className="accordion-body">
+                      <div className="accordion-body visible">
                         Equal Math was heavily influenced by Equal Math
                         Opportunities Oakland (EMOO), a similar program run by
                         Allie Ackert. After Allie moved away, Aiden, Phi, and
