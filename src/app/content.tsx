@@ -2,6 +2,10 @@
 
 import Link from "next/link"
 
+import "./css/bootstrap.min.css"
+import "./css/bootstrap-icons.css"
+import "./css/templatemo-topic-listing.css"
+
 export default function Content() {
   return (
     <>
