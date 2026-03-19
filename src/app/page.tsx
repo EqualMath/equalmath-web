@@ -1,11 +1,13 @@
 "use client"
 
 import Script from "next/script"
+import { Montserrat } from "next/font/google"
+import Link from "next/link"
+
+import "./global.css"
 import "./css/bootstrap.min.css"
 import "./css/bootstrap-icons.css"
 import "./css/templatemo-topic-listing.css"
-import { Montserrat } from "next/font/google"
-import Link from "next/link"
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
