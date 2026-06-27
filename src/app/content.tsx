@@ -181,8 +181,8 @@ export default function Content() {
                           <div className="d-flex">
                             <div>
                               <p className="mb-0">
-                                I love math, music, and making! 17 is the best
-                                number.
+                                I love math, music, and making! I have a big
+                                shark stuffie.
                               </p>
                               <p className="mb-0">
                                 <br />I can tutor topics from elementary school
@@ -214,12 +214,11 @@ export default function Content() {
                           <div className="d-flex">
                             <div>
                               <p className="mb-0">
-                                Loves math, programming, and piano!
+                                I love math, programming, and piano!
                               </p>
                               <p className="mb-0">
-                                <br />
-                                Can tutor topics from middle school math to
-                                second-year calculus and linear algebra.
+                                <br />I can tutor topics from middle school math
+                                to second-year calculus and linear algebra.
                               </p>
                               <p className="mb-0">
                                 <br />
