@@ -76,6 +76,9 @@ export default function Content() {
                 <h6 className="text-center" style={{ color: "white" }}>
                   free math tutoring for all
                 </h6>
+                <h6 className="text-center" style={{ color: "white" }}>
+                  by high school students in Oakland
+                </h6>
               </div>
             </div>
           </div>
@@ -128,7 +131,10 @@ export default function Content() {
                       <h4 className="text-black mb-3">Meet Virtually</h4>
 
                       <p className="text-black">
-                        You&apos;ll connect with your tutor via Google Meet.
+                        You&apos;ll connect with your tutor online via Google
+                        Meet, or in person at a public library. On their booking
+                        pages, tutors list which (if any) libraries work for
+                        them.
                       </p>
 
                       <div className="icon-holder">
@@ -146,7 +152,7 @@ export default function Content() {
           <div className="container">
             <div className="row">
               <div className="col-12 text-center">
-                <h2 className="mb-4">Tutors</h2>
+                <h2 className="mb-4">Summer Tutors</h2>
               </div>
             </div>
           </div>
@@ -163,7 +169,8 @@ export default function Content() {
                     tabIndex={0}
                   >
                     <div className="row">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {/* REPLACE ABOVE LINE WITH THIS ONE AFTER SUMMER <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"> */}
                         <div className="custom-block bg-white shadow-lg">
                           <div className="d-flex">
                             <h5 className="mb-2">Phi</h5>
@@ -180,8 +187,8 @@ export default function Content() {
                           <div className="d-flex">
                             <div>
                               <p className="mb-0">
-                                I love math, music, and making! 17 is the best
-                                number.
+                                I love math, music, and making! I have a big
+                                shark stuffie.
                               </p>
                               <p className="mb-0">
                                 <br />I can tutor topics from elementary school
@@ -213,12 +220,11 @@ export default function Content() {
                           <div className="d-flex">
                             <div>
                               <p className="mb-0">
-                                Loves math, programming, and piano!
+                                I love math, programming, and piano!
                               </p>
                               <p className="mb-0">
-                                <br />
-                                Can tutor topics from middle school math to
-                                second-year calculus and linear algebra.
+                                <br />I can tutor topics from middle school math
+                                to second-year calculus and linear algebra.
                               </p>
                               <p className="mb-0">
                                 <br />
@@ -228,7 +234,7 @@ export default function Content() {
                           </div>
                         </div>
 
-                        <div className="custom-block bg-white shadow-lg">
+                        {/* COMMENTED OUT FOR THE SUMMER <div className="custom-block bg-white shadow-lg">
                           <div>
                             <div className="d-flex">
                               <div>
@@ -260,7 +266,7 @@ export default function Content() {
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="custom-block bg-white shadow-lg">
                           <div>
@@ -297,7 +303,7 @@ export default function Content() {
                           </div>
                         </div>
 
-                        <div className="custom-block bg-white shadow-lg">
+                        {/* COMMENTED OUT FOR THE SUMMER <div className="custom-block bg-white shadow-lg">
                           <div>
                             <div className="d-flex">
                               <div>
@@ -329,7 +335,7 @@ export default function Content() {
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -407,6 +413,34 @@ export default function Content() {
                         Don&apos;t see a topic you&apos;re interested in? Reach
                         out (see bottom of page) and we&apos;ll do our best to
                         connect you with a tutor or other resources.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingThree">
+                      <button
+                        className="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree"
+                        aria-expanded="false"
+                        aria-controls="collapseThree"
+                      >
+                        Where did the other tutors go?
+                      </button>
+                    </h2>
+
+                    <div
+                      id="collapseThree"
+                      className="accordion-collapse collapse"
+                      aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div className="accordion-body visible">
+                        Over the summer, some of our usual tutors aren't
+                        available, so they're temporarily hidden on the website.
+                        Sachin and Allison will be back in the fall!
                       </div>
                     </div>
                   </div>
