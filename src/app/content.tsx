@@ -131,7 +131,10 @@ export default function Content() {
                       <h4 className="text-black mb-3">Meet Virtually</h4>
 
                       <p className="text-black">
-                        You&apos;ll connect with your tutor via Google Meet.
+                        You&apos;ll connect with your tutor online via Google
+                        Meet, or in person at a public library. On their booking
+                        pages, tutors list which (if any) libraries work for
+                        them.
                       </p>
 
                       <div className="icon-holder">
