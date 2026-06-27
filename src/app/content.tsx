@@ -76,6 +76,9 @@ export default function Content() {
                 <h6 className="text-center" style={{ color: "white" }}>
                   free math tutoring for all
                 </h6>
+                <h6 className="text-center" style={{ color: "white" }}>
+                  by high school students in Oakland
+                </h6>
               </div>
             </div>
           </div>
