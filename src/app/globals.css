@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/*
+ * Colors follow the system theme unless the visitor picks one with the
+ * header toggle, which sets data-theme="light" or "dark" on <html>.
+ */
+:root {
+  color-scheme: light dark;
+
+  --paper: light-dark(#fbf8f1, #1b1e24);
+  --paper-raised: light-dark(#ffffff, #23272f);
+  --ink: light-dark(#1f2430, #f1ece2);
+  --graphite: light-dark(#5b6170, #a5abb8);
+  --rule: light-dark(#e4ded0, #363b46);
+  --grid: light-dark(#ece6d8, #262a32);
+  /* marker fills and large text; marker-text is the deeper shade for small text */
+  --marker: light-dark(#e8693f, #f07a55);
+  --marker-soft: light-dark(#fbe3d8, #4a2a20);
+  --marker-text: light-dark(#c8431f, #f07a55);
+  --on-marker: light-dark(#1f2430, #1b1e24);
+  --button-shadow: light-dark(#d4c7b4, #f1ece2);
+  --teal: light-dark(#1f7a70, #4fc1b2);
+  --teal-soft: light-dark(#d6ece8, #1f3a37);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme]), :root:not([data-theme]) *) {
+      @slot;
+    }
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-rule: var(--rule);
+  --color-marker: var(--marker);
+  --color-marker-soft: var(--marker-soft);
+  --color-marker-text: var(--marker-text);
+  --color-on-marker: var(--on-marker);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+  --font-hand: var(--font-caveat);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--marker);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--marker-soft);
+  }
+}
+
+@utility graph-paper {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+/* A sheet of paper resting on another: hard offset shadow, no blur. */
+@utility paper-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 0 var(--rule);
+}
