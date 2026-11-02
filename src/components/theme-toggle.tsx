@@ -6,18 +6,14 @@ const storageKey = "theme"
 
 /**
  * Runs in <head> before the page paints so a saved choice never flashes the
- * wrong theme. With nothing saved, the site follows the system setting.
+ * wrong theme. With nothing saved, the site stays in light mode.
  */
 export const themeScript = `try{var t=localStorage.getItem("${storageKey}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`
 
 export function ThemeToggle() {
   function toggle() {
     const root = document.documentElement
-    const isDark =
-      root.dataset.theme ?
-        root.dataset.theme === "dark"
-      : matchMedia("(prefers-color-scheme: dark)").matches
-    const next = isDark ? "light" : "dark"
+    const next = root.dataset.theme === "dark" ? "light" : "dark"
 
     root.dataset.theme = next
     try {

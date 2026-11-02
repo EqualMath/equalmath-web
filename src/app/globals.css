@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 /*
- * Colors follow the system theme unless the visitor picks one with the
- * header toggle, which sets data-theme="light" or "dark" on <html>.
+ * Light by default. The header toggle switches themes by setting
+ * data-theme="light" or "dark" on <html>.
  */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   --paper: light-dark(#fbf8f1, #1b1e24);
   --paper-raised: light-dark(#ffffff, #23272f);
@@ -23,24 +23,11 @@
   --teal-soft: light-dark(#d6ece8, #1f3a37);
 }
 
-:root[data-theme="light"] {
-  color-scheme: light;
-}
-
 :root[data-theme="dark"] {
   color-scheme: dark;
 }
 
-@custom-variant dark {
-  &:where([data-theme="dark"], [data-theme="dark"] *) {
-    @slot;
-  }
-  @media (prefers-color-scheme: dark) {
-    &:where(:root:not([data-theme]), :root:not([data-theme]) *) {
-      @slot;
-    }
-  }
-}
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --color-paper: var(--paper);
