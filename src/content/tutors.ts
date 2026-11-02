@@ -50,8 +50,16 @@ export const tutors: Tutor[] = [
     slug: "phi",
     name: "Phi",
     grade: 12,
-    bio: "I love math, music, and making! I have a big shark stuffie.",
+    bio: "I love math, cello, poetry, and my cats.",
     topics: { from: "elementary school math", to: "second-year calculus" },
+    status: "active",
+  },
+  {
+    slug: "em",
+    name: "Em",
+    grade: 11,
+    bio: "I love math, music, languages, and teaching!",
+    topics: { from: "elementary school math", to: "high school math" },
     status: "active",
   },
 ]
